@@ -10,11 +10,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Klaro — десять клиентов, которым ещё можно помочь" },
+      { title: "3Consulting — десять клиентов, которым ещё можно помочь" },
       {
         name: "description",
         content:
-          "Klaro собирает сигналы продукта, счетов и поддержки и каждое утро ставит в очередь клиентов, которых ещё можно удержать.",
+          "3Consulting собирает сигналы продукта, счетов и поддержки и каждое утро ставит в очередь клиентов, которых ещё можно удержать.",
       },
       { name: "theme-color", content: "#fde7dc" },
     ],

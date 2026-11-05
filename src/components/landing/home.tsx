@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 
-const STORAGE_KEY = "klaro-letter";
+const STORAGE_KEY = "3consulting-letter";
 
 const NAV = [
   { href: "#product", label: "Продукт" },
@@ -283,9 +283,9 @@ export function HomePage() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5">
           <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
             <span className="headline grid size-9 place-items-center rounded-xl bg-ink text-lg text-paper">
-              К
+              3
             </span>
-            Klaro
+            3Consulting
           </a>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Разделы">
@@ -343,7 +343,7 @@ export function HomePage() {
                 Десять клиентов, которым ещё можно <span className="text-coral">помочь</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg text-muted">
-                Klaro смотрит продукт, счета и тикеты и каждое утро ставит в очередь только тех, кого
+                3Consulting смотрит продукт, счета и тикеты и каждое утро ставит в очередь только тех, кого
                 ещё реально удержать. С причиной и первым абзацем — не с таблицей на сорок столбцов.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -422,7 +422,7 @@ export function HomePage() {
             <div className="max-w-3xl">
               <p className="text-sm font-semibold text-coral">Продукт</p>
               <h2 className="headline mt-3 text-3xl sm:text-4xl">
-                Klaro не рисует ещё один дашборд. Он закрывает утро.
+                3Consulting не рисует ещё один дашборд. Он закрывает утро.
               </h2>
             </div>
             <ol className="mt-10 grid gap-8 md:grid-cols-3">
@@ -672,8 +672,8 @@ export function HomePage() {
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-2 font-semibold">
-            <span className="headline grid size-8 place-items-center rounded-lg bg-ink text-paper">К</span>
-            Klaro
+            <span className="headline grid size-8 place-items-center rounded-lg bg-ink text-paper">3</span>
+            3Consulting
           </p>
           <p className="text-sm text-muted">Очередь удержания. Демонстрационный лендинг.</p>
           <a href="#start" className="text-sm font-semibold text-ink">
