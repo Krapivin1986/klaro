@@ -22,8 +22,8 @@ npm run dev
 
 ## Сайт
 
-Страница публикуется на GitHub Pages при каждом пуше в `main`:
+Готовая страница:
 
-https://krapivin1986.github.io/klaro/
+https://cdn.jsdelivr.net/gh/Krapivin1986/klaro@gh-pages/index.html
 
-GitHub Pages отдаёт только статику, поэтому сборка делает снимок лендинга с префиксом `/klaro/`. Серверная версия для Vercel этим не заменяется.
+Адрес GitHub Pages `https://krapivin1986.github.io/klaro/` заработает, если в настройках репозитория выбрать источник **GitHub Actions** или ветку `gh-pages`. Подключённый доступ не может включить этот переключатель сам.

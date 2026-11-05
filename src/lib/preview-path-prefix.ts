@@ -42,7 +42,7 @@ export function previewPathRewrite(): LocationRewrite | undefined {
 
 const PAGES_PREFIX = "/klaro";
 
-/** GitHub project Pages serves this app under /klaro while routes stay at /. */
+/** Project site is served under /klaro; the router still owns /. */
 export function githubPagesRewrite(): LocationRewrite | undefined {
   if (typeof window === "undefined") return undefined;
   const { pathname } = window.location;
@@ -52,6 +52,18 @@ export function githubPagesRewrite(): LocationRewrite | undefined {
   return undefined;
 }
 
+/** jsDelivr serves the same snapshot from a deep directory URL. */
+export function cdnSiteRewrite(): LocationRewrite | undefined {
+  if (typeof window === "undefined") return undefined;
+  const host = window.location.hostname.toLowerCase();
+  if (!(host === "cdn.jsdelivr.net" || host.endsWith(".jsdelivr.net"))) return undefined;
+  let prefix = window.location.pathname;
+  if (prefix.endsWith("/index.html")) prefix = prefix.slice(0, -"/index.html".length);
+  if (prefix.length > 1 && prefix.endsWith("/")) prefix = prefix.slice(0, -1);
+  if (!prefix || prefix === "/") return undefined;
+  return prefixRewrite(prefix);
+}
+
 export function appPathRewrite(): LocationRewrite | undefined {
-  return githubPagesRewrite() ?? previewPathRewrite();
+  return cdnSiteRewrite() ?? githubPagesRewrite() ?? previewPathRewrite();
 }

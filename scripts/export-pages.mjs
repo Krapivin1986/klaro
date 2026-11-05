@@ -47,12 +47,13 @@ await run("node", ["scripts/preview.mjs", "restart"], env);
 
 try {
   const response = await waitForPreview();
-  const html = await response.text();
+  let html = await response.text();
+  html = html.replaceAll("\u0000", "").replaceAll('"/./', '"./').replaceAll("'/./", "'./");
   if (!html.includes("Десять клиентов")) {
     throw new Error("rendered page is missing the landing headline");
   }
-  if (!html.includes("/klaro/assets/")) {
-    throw new Error("rendered page is missing /klaro/ asset URLs");
+  if (!html.includes("assets/")) {
+    throw new Error("rendered page is missing asset URLs");
   }
 
   rmSync(out, { recursive: true, force: true });
