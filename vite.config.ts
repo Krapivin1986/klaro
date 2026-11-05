@@ -146,6 +146,8 @@ function authPopupPlugin(): Plugin {
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
 export default defineConfig(({ command, isPreview }) => ({
+  // Project Pages lives at /klaro/. Leave the Vercel and preview builds at /.
+  ...(process.env.GITHUB_PAGES === "1" ? { base: "/klaro/" } : {}),
   server: {
     host: "0.0.0.0",
     port: 8080,

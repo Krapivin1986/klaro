@@ -39,3 +39,19 @@ export function previewPathRewrite(): LocationRewrite | undefined {
   const prefix = previewPathPrefix(window.location.hostname, window.location.pathname);
   return prefix ? prefixRewrite(prefix) : undefined;
 }
+
+const PAGES_PREFIX = "/klaro";
+
+/** GitHub project Pages serves this app under /klaro while routes stay at /. */
+export function githubPagesRewrite(): LocationRewrite | undefined {
+  if (typeof window === "undefined") return undefined;
+  const { pathname } = window.location;
+  if (pathname === PAGES_PREFIX || pathname.startsWith(`${PAGES_PREFIX}/`)) {
+    return prefixRewrite(PAGES_PREFIX);
+  }
+  return undefined;
+}
+
+export function appPathRewrite(): LocationRewrite | undefined {
+  return githubPagesRewrite() ?? previewPathRewrite();
+}
