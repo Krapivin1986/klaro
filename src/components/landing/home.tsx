@@ -265,7 +265,7 @@ export function HomePage() {
   }
 
   return (
-    <div className="bg-paper text-ink">
+    <div className="overflow-x-clip bg-paper text-ink">
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
@@ -274,18 +274,18 @@ export function HomePage() {
       </a>
 
       <header
-        className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-200 ${
+        className={`sticky top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-[background-color,border-color,box-shadow] duration-200 ${
           scrolled || open
             ? "border-line bg-paper/95 shadow-lift backdrop-blur-md"
             : "border-transparent bg-glow"
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5">
-          <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
-            <span className="headline grid size-9 place-items-center rounded-xl bg-ink text-lg text-paper">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-5">
+          <a href="#top" className="flex min-w-0 items-center gap-2 font-semibold tracking-tight">
+            <span className="headline grid size-9 shrink-0 place-items-center rounded-xl bg-ink text-lg text-paper">
               3
             </span>
-            3Consulting
+            <span className="truncate">3Consulting</span>
           </a>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Разделы">
@@ -300,8 +300,11 @@ export function HomePage() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <a href="#start" className={`${btnInk} h-11 px-4 md:h-12 md:px-5`}>
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href="#start"
+              className={`${btnInk} h-11 px-3.5 min-[380px]:px-4 md:h-12 md:px-5`}
+            >
               <span className="md:hidden">Начать</span>
               <span className="hidden md:inline">Попробовать бесплатно</span>
             </a>
@@ -319,7 +322,7 @@ export function HomePage() {
         </div>
 
         <div id={menuId} className={open ? "border-t border-line md:hidden" : "hidden"} hidden={!open}>
-          <nav className="mx-auto flex max-w-6xl flex-col px-5 py-3" aria-label="Разделы">
+          <nav className="mx-auto flex max-w-6xl flex-col px-4 py-2 sm:px-5" aria-label="Разделы">
             {NAV.map((item) => (
               <a
                 key={item.href}
@@ -330,16 +333,19 @@ export function HomePage() {
                 {item.label}
               </a>
             ))}
+            <a href="#start" className={`${btnInk} my-2 w-full`} onClick={() => setOpen(false)}>
+              Попробовать бесплатно
+            </a>
           </nav>
         </div>
       </header>
 
       <main id="content">
         <section id="top" className="bg-glow scroll-mt-20">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pt-10 pb-16 lg:grid-cols-12 lg:gap-12 lg:pt-16 lg:pb-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 pt-8 pb-12 sm:px-5 sm:pt-10 sm:pb-16 lg:grid-cols-12 lg:gap-12 lg:pt-16 lg:pb-24">
             <div className="lg:col-span-6">
               <p className="text-sm font-semibold text-coral">Для команд удержания</p>
-              <h1 className="headline mt-3 text-4xl text-ink sm:text-5xl lg:text-6xl">
+              <h1 className="headline mt-3 text-[2rem] text-ink min-[380px]:text-4xl sm:text-5xl lg:text-6xl">
                 Десять клиентов, которым ещё можно <span className="text-coral">помочь</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg text-muted">
@@ -347,26 +353,26 @@ export function HomePage() {
                 ещё реально удержать. С причиной и первым абзацем — не с таблицей на сорок столбцов.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button type="button" className={btnInk} onClick={() => go("pilot")}>
+                <button type="button" className={`${btnInk} w-full sm:w-auto`} onClick={() => go("pilot")}>
                   Попробовать 14 дней
                   <ArrowRight aria-hidden className="size-4" />
                 </button>
-                <a href="#product" className={btnGhost}>
+                <a href="#product" className={`${btnGhost} w-full sm:w-auto`}>
                   Как устроено утро
                 </a>
               </div>
-              <dl className="mt-10 grid grid-cols-3 gap-3 border-t border-ink/10 pt-6">
+              <dl className="mt-8 grid grid-cols-3 gap-2 border-t border-ink/10 pt-5 sm:mt-10 sm:gap-4 sm:pt-6">
                 <div>
-                  <dt className="headline text-2xl tabular-nums sm:text-3xl">−18%</dt>
-                  <dd className="mt-1 text-sm text-muted">отток за квартал</dd>
+                  <dt className="headline text-xl tabular-nums sm:text-3xl">−18%</dt>
+                  <dd className="mt-1 text-xs leading-snug text-muted sm:text-sm">отток за квартал</dd>
                 </div>
                 <div>
-                  <dt className="headline text-2xl tabular-nums sm:text-3xl">6 ч</dt>
-                  <dd className="mt-1 text-sm text-muted">меньше на разбор</dd>
+                  <dt className="headline text-xl tabular-nums sm:text-3xl">6 ч</dt>
+                  <dd className="mt-1 text-xs leading-snug text-muted sm:text-sm">меньше на разбор</dd>
                 </div>
                 <div>
-                  <dt className="headline text-2xl tabular-nums sm:text-3xl">10</dt>
-                  <dd className="mt-1 text-sm text-muted">контактов с утра</dd>
+                  <dt className="headline text-xl tabular-nums sm:text-3xl">10</dt>
+                  <dd className="mt-1 text-xs leading-snug text-muted sm:text-sm">контактов с утра</dd>
                 </div>
               </dl>
             </div>
@@ -378,7 +384,7 @@ export function HomePage() {
                     <p className="text-sm text-muted">Сегодня · утро</p>
                     <p className="headline text-2xl">Очередь дня</p>
                   </div>
-                  <p className="rounded-full bg-ink px-3 py-1 text-sm font-medium text-paper">4 из 10</p>
+                  <p className="shrink-0 rounded-full bg-ink px-3 py-1 text-sm font-medium text-paper">4 из 10</p>
                 </div>
                 <ul className="divide-y divide-line">
                   {QUEUE.map((row) => (
@@ -391,8 +397,8 @@ export function HomePage() {
                           {row.score}
                         </p>
                       </div>
-                      <div className="mt-1 flex items-center justify-between gap-3 text-sm text-muted">
-                        <p>{row.reason}</p>
+                      <div className="mt-1 flex items-start justify-between gap-3 text-sm text-muted">
+                        <p className="min-w-0">{row.reason}</p>
                         <p className="shrink-0 font-medium text-ink">{row.when}</p>
                       </div>
                       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-paper">
@@ -446,7 +452,7 @@ export function HomePage() {
                   Всё, что нужно, чтобы написать вовремя. Ничего, что откладывает письмо.
                 </h2>
               </div>
-              <a href="#pricing" className={`${btnGhost} shrink-0`}>
+              <a href="#pricing" className={`${btnGhost} w-full shrink-0 sm:w-auto`}>
                 Смотреть тарифы
                 <ArrowRight aria-hidden className="size-4" />
               </a>
@@ -457,7 +463,7 @@ export function HomePage() {
                 return (
                   <li
                     key={feature.title}
-                    className="rounded-3xl border border-line bg-card p-6 transition-[transform,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-ink"
+                    className="rounded-3xl border border-line bg-card p-5 transition-[transform,border-color] duration-200 ease-out [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-ink sm:p-6"
                   >
                     <Icon aria-hidden className="size-5 text-coral" />
                     <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
@@ -481,12 +487,12 @@ export function HomePage() {
               <div
                 role="group"
                 aria-label="Период оплаты"
-                className="inline-flex rounded-full border border-line bg-paper p-1"
+                className="flex w-full rounded-full border border-line bg-paper p-1 sm:inline-flex sm:w-auto"
               >
                 <button
                   type="button"
                   aria-pressed={billing === "month"}
-                  className={`${tap} h-11 rounded-full px-4 text-sm font-semibold ${
+                  className={`${tap} h-11 flex-1 rounded-full px-4 text-sm font-semibold sm:flex-none ${
                     billing === "month" ? "bg-ink text-paper" : "text-muted"
                   }`}
                   onClick={() => setBilling("month")}
@@ -496,7 +502,7 @@ export function HomePage() {
                 <button
                   type="button"
                   aria-pressed={billing === "year"}
-                  className={`${tap} h-11 rounded-full px-4 text-sm font-semibold ${
+                  className={`${tap} h-11 flex-1 rounded-full px-4 text-sm font-semibold sm:flex-none ${
                     billing === "year" ? "bg-ink text-paper" : "text-muted"
                   }`}
                   onClick={() => setBilling("year")}
@@ -529,7 +535,7 @@ export function HomePage() {
                       ) : null}
                     </div>
                     <p className={`mt-2 text-sm ${featured ? "text-mist" : "text-muted"}`}>{plan.blurb}</p>
-                    <p className="mt-6 flex items-end gap-2">
+                    <p className="mt-6 flex flex-wrap items-end gap-x-2 gap-y-1">
                       <span className="headline text-4xl tabular-nums">{money(price)}&nbsp;₽</span>
                       <span className={`mb-1 text-sm ${featured ? "text-mist" : "text-muted"}`}>
                         {price === 0 ? "бесплатно" : "в месяц"}
@@ -593,7 +599,7 @@ export function HomePage() {
             </ul>
             <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-3xl bg-glow px-6 py-6 sm:flex-row sm:items-center">
               <p className="headline max-w-xl text-2xl">Хотите такой понедельник?</p>
-              <button type="button" className={btnInk} onClick={() => go("pilot")}>
+              <button type="button" className={`${btnInk} w-full sm:w-auto`} onClick={() => go("pilot")}>
                 Открыть свою очередь
                 <ArrowRight aria-hidden className="size-4" />
               </button>
@@ -621,7 +627,7 @@ export function HomePage() {
               <div role="status" className="mt-8 rounded-3xl border border-line bg-card p-6">
                 <p className="headline text-3xl">Вы в списке.</p>
                 <p className="mt-3 text-muted">
-                  Написали на <span className="font-semibold text-ink">{saved}</span>. В этом демо адрес
+                  Написали на <span className="font-semibold break-all text-ink">{saved}</span>. В этом демо адрес
                   остаётся только в вашем браузере и никуда не отправляется.
                 </p>
                 <button type="button" className={`${btnGhost} mt-6`} onClick={resetLetter}>
@@ -650,7 +656,7 @@ export function HomePage() {
                     }}
                     className="h-12 w-full rounded-full border border-line bg-card px-5 text-base text-ink placeholder:text-muted"
                   />
-                  <button type="submit" className={`${btnInk} shrink-0`}>
+                  <button type="submit" className={`${btnInk} w-full shrink-0 sm:w-auto`}>
                     {intent === "talk" ? "Жду ответа" : "Получить доступ"}
                   </button>
                 </div>
@@ -670,13 +676,13 @@ export function HomePage() {
       </main>
 
       <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:flex-row sm:items-center sm:justify-between sm:px-5">
           <p className="flex items-center gap-2 font-semibold">
             <span className="headline grid size-8 place-items-center rounded-lg bg-ink text-paper">3</span>
             3Consulting
           </p>
           <p className="text-sm text-muted">Очередь удержания. Демонстрационный лендинг.</p>
-          <a href="#start" className="text-sm font-semibold text-ink">
+          <a href="#start" className="inline-flex min-h-11 items-center text-sm font-semibold text-ink">
             Начать бесплатно
           </a>
         </div>
